@@ -124,10 +124,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "HoldingHands-Front",
-  "cli": {
-    "analytics": "813ab531-51f5-4628-b410-309fb0c9940e"
-  }
+    }},
+  "defaultProject": "HoldingHands-Front"
 }
