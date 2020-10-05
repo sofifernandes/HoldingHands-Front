@@ -1,8 +1,16 @@
 #iconeNavBar {
-    content: url("https://i.imgur.com/OcdxGxk.jpg");
+    content: url("https://i.imgur.com/G2rX04v.png");
     width: 45px;
 }
 
 a{
     cursor: pointer;
+}
+
+.cinza{
+    background-color: #dad8d8;
+}
+
+.corBotao{
+    background-color: #808080;
 }
