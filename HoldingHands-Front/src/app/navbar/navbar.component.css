@@ -1,0 +1,8 @@
+#iconeNavBar {
+    content: url("https://i.imgur.com/OcdxGxk.jpg");
+    width: 45px;
+}
+
+a{
+    cursor: pointer;
+}
