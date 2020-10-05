@@ -1,20 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand ml-2 mr-4" routerLink="/home" id="iconeNavBar" style="border-radius: 7px;"></a>
-    
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/sobre">Sobre Nós</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/contato">Contato</a>
-        </li>       
-      </ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand ml-2 mr-4" routerLink="/home" id="iconeNavBar" style="border-radius: 7px;"></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/sobre">Sobre Nós</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/contato">Contato</a>
+      </li>
+    </ul>
+
+    <div *ngIf='auth.btnLogin()'>
       <button class="btn btn-info my-2 my-sm-0 mr-3" type="submit" routerLink="/login">Entrar</button>
-      <button class="btn btn-light border border-info text-info my-2 my-sm-0" type="submit" routerLink="/cadastrar">Cadastrar</button>
     </div>
+
+    <div *ngIf='auth.btnLogin()'>
+      <button class="btn btn-light border border-info text-info my-2 my-sm-0" type="submit"
+        routerLink="/cadastro">Cadastrar</button>
+    </div>
+
+    <div *ngIf='auth.btnSair()'>
+      <button class="btn btn-info my-2 my-sm-0 mr-3" type="submit" (click)='sair()'>Sair</button>
+    </div>
+  </div>
 </nav>
