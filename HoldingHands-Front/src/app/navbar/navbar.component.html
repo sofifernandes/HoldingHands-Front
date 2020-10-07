@@ -7,6 +7,16 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <div *ngIf='auth.btnSair()'>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/perfil">Perfil</a>
+        </li>
+      </div>
+      <div *ngIf='auth.btnSair()'>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/feed">Feed</a>
+        </li>
+      </div>
       <li class="nav-item">
         <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/sobre">Sobre Nós</a>
       </li>
@@ -15,12 +25,14 @@
       </li>
     </ul>
 
+    
+
     <div *ngIf='auth.btnLogin()'>
       <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink="/login">Entrar</button>
     </div>
 
     <div *ngIf='auth.btnLogin()'>
-      <button class="btn btn-link border border-secondary text-light my-2 my-sm-0" id="botaoCadastrar" type="submit" routerLink="/cadastro" onmouseover="corBackground(this)">Cadastrar</button>
+      <button class="btn btn-link border border-secondary text-light my-2 my-sm-0" id="botaoCadastrar" type="submit" routerLink="/cadastro">Cadastrar</button>
     </div>
 
     <div *ngIf='auth.btnSair()'>

@@ -22,7 +22,4 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
   }
 
-  corBackground(x) {
-    x.style.backgroundColor = "#000000";
-  }
 }
