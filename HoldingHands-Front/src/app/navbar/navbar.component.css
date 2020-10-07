@@ -7,8 +7,8 @@ a{
     cursor: pointer;
 }
 
-.cinza{
-    background-color: #dad8d8;
+.borderColor {
+    border-color: #428bca;
 }
 
 .corBotao{
