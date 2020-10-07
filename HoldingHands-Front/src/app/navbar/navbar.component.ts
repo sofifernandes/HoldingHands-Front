@@ -21,8 +21,4 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/login"])
     localStorage.clear();
   }
-
-  corBackground(x) {
-    x.style.backgroundColor = "#000000";
-  }
 }

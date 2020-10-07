@@ -11,6 +11,7 @@ a{
     border-color: #428bca;
 }
 
-.corBotao{
-    background-color: #808080;
+.corBotao:hover {
+    background-color: #4a9eb8 !important;
+    color: white !important;
 }
