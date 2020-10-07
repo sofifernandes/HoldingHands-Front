@@ -21,8 +21,4 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/login"])
     localStorage.clear();
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> a7fecd7f45ed9f133ae27bfd478985f7ac281958
 }
