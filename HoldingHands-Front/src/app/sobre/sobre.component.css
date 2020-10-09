@@ -1,3 +1,12 @@
 .img{
     width: 200px;    
 }
+
+.parallax {
+    background-image: url("https://i.imgur.com/JY0RN9a.jpg");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
