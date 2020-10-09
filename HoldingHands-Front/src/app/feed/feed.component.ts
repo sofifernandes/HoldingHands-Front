@@ -10,18 +10,8 @@ import { TemaService } from '../service/tema.service';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
-export class FeedComponent implements OnInit {
-  
-  key = 'data'
-  reverse = true
+export class FeedComponent implements OnInit {  
 
-  postagem: Postagem = new Postagem()
-  listaPostagens: Postagem[]
-
-  tema: Tema = new Tema()
-  listaTema: Tema[]
-
-  idTema: number
 
   constructor(
     private postagemService: PostagemService, 
@@ -29,14 +19,9 @@ export class FeedComponent implements OnInit {
     private alert: AlertasService
   ) { }
 
-  ngOnInit() {
-    window.scroll(0, 0)
 
-    this.findAllPostagens()
-    this.findAllTemas()
+  ngOnInit() {    
   }
-
-
 
   findAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
@@ -71,6 +56,7 @@ export class FeedComponent implements OnInit {
       this.tema = resp
     })
   }  
+
 }
 
  

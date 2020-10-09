@@ -47,7 +47,6 @@ export class PerfilComponent implements OnInit {
   publicar() {
     this.tema.id= this.idTema
     this.postagem.tema = this.tema
-
     if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null ){
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {

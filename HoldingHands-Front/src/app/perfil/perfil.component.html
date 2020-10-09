@@ -4,24 +4,24 @@
             <app-perfil-lateral></app-perfil-lateral>
         </div>
         <div class="col-md-8">
-            <h3 class="text-center mb-4 text-monospace">
-                Como tem sido minha experiência na Generation?
+            <h3 class="text-center mb-4">
+                Criar postagem:
             </h3>
             <div class="form-group">
-                <label class="text-monospace" for="titulo">Título:</label>
+                <label for="titulo">Título:</label>
                 <input type="text" class="form-control" id="titulo" placeholder="Digite aqui o seu titulo" [(ngModel)]='postagem.titulo'>
               </div>
               <div class="form-group">
-                  <label class="text-monospace" for="texto">Texto:</label>
+                  <label for="texto">Texto:</label>
                   <textarea class="form-control" id="texto" rows="3" placeholder="Digite aqui o seu texto" [(ngModel)]='postagem.textoPostagem'></textarea>
               </div>
               <div class="row d-flex align-items-end">
                 <div class="col-md-6">
                   <div class="form-group m-0">
-                    <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
+                    <label for="tema">Escolha um tema:</label>
                     <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
                       <option *ngFor ='let item of listaTema' value={{item.id}}>
-                        {{item.descricao}}
+                        {{item.nome}}
                       </option>
                     </select>
                   </div>
@@ -57,7 +57,7 @@
                           <div class="row d-flex align-items-center">
                               <div class="col-md-8">
                                   <h5 class="card-title"> {{item.titulo}} </h5>
-                                  <small>Tema: {{item.tema.descricao}} </small>
+                                  <small>Tema: {{item.tema.nome}} </small>
                               </div>
                               <div class="col-md-4 d-flex justify-content-end">
       
@@ -74,8 +74,10 @@
                           </div>
           
                           <div class="card-body" >
-                            <p class="card-text" aria-describedby="texto"> {{item.texto}} </p>
-                            <small id="textoPostagem" class="form-text m-0 text-muted mb-3 text-monospace">
+
+                            <p class="card-text" aria-describedby="texto"> {{item.textoPostagem}} </p>
+                            <small id="texto" class="form-text m-0 text-muted mb-3">
+
                               Postado em {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date:'HH:mm'}}</small>
                           </div>
                    </div>
