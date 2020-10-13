@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor( private http: HttpClient) { }
 
   logar(userLogin: UserLogin) {
     return this.http.post('http://localhost:8080/usuario/logar', userLogin)
@@ -34,11 +34,13 @@ export class AuthService {
     let ok = false
     let token = localStorage.getItem("token")
 
+
     if (token == null) {
       ok = true
     }
 
     return ok
-  }
+  } 
+  
 
 }
