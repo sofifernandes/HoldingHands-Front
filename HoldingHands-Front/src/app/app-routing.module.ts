@@ -6,6 +6,7 @@ import { DeletePostagemComponent } from './delete-postagem/delete-postagem.compo
 import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
 import { FeedComponent } from './feed/feed.component';
 import { HomeComponent } from './home/home.component';
+import { InformacoesComponent } from './informacoes/informacoes.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PutPostagemComponent } from './put-postagem/put-postagem.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'editar-post/:id', component: PutPostagemComponent},
   {path: 'delete-post/:id', component: DeletePostagemComponent},
   {path: 'editar-tema/:id', component: PutTemaComponent},
-  {path: 'delete-post/:id', component: DeleteTemaComponent}
+  {path: 'delete-post/:id', component: DeleteTemaComponent},
+  {path: 'informações', component: InformacoesComponent}
 ];
 
 @NgModule({

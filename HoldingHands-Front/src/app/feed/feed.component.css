@@ -1,0 +1,11 @@
+.sticker {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+    height: 300px;
+    overflow-y: auto;
+}
+
+a {
+    cursor: pointer;
+}

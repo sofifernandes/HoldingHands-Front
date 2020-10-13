@@ -23,6 +23,8 @@ export class PerfilComponent implements OnInit {
 
   idTema: number
 
+  frasePostagem: string
+
   constructor(
     private postagemService: PostagemService, 
     private temaService: TemaService,
@@ -34,6 +36,7 @@ export class PerfilComponent implements OnInit {
 
     this.findAllPostagens()
     this.findAllTemas()
+    this.fraseAleatoria()
   }
 
 
@@ -70,6 +73,17 @@ export class PerfilComponent implements OnInit {
       this.tema = resp
     })
   }  
+
+  fraseAleatoria() {
+    let num = Math.floor(Math.random() * 3)
+    if (num == 0) {
+      this.frasePostagem = 'Qual o insight de hoje?'
+    } else if  (num == 1) {
+      this.frasePostagem = 'Que tal ajudar alguém hoje?'
+    } else {
+      this.frasePostagem = 'Colabore conosco!'
+    }
+  }
 }
 
  

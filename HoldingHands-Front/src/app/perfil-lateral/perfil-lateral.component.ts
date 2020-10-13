@@ -10,28 +10,24 @@ import { AuthService } from '../service/auth.service';
 })
 export class PerfilLateralComponent implements OnInit {
 
-  nome: string   
+  nome: string
   user: User = new User()
-  
+
   constructor(
     private usuarioService: UsuarioService) { }
 
-  ngOnInit() {  
+  ngOnInit() {
 
     this.findByNomeUser()
 
-  } 
+  }
 
-  findByNomeUser() {  
-      let nomeUser = localStorage.getItem("nome")            
-      this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {
-        this.user = resp
-      })
-      if( this.user ) {
-        this.nome = 'foi'
-      } else {
-        this.nome = 'não foi'
-      }
+  findByNomeUser() {
+    let nomeUser = localStorage.getItem("nome")
+    this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {
+      this.user = resp
+      this.nome = this.user.nome
+    })
   }
 
 }
