@@ -8,16 +8,30 @@ import { Postagem } from '../model/postagem';
 export class PostagemService {
 
   constructor(
-    private http: HttpClient  
+    private http: HttpClient
   ) { }
 
-  token={headers: new HttpHeaders().set("Authorization", localStorage.getItem("token"))}
+  token = { headers: new HttpHeaders().set("Authorization", localStorage.getItem("token")) }
 
-  getAllPostagens(){
-    return this.http.get("http://localhost:8080/postagens", this.token)
+
+  getAllPostagens() {
+    return this.http.get("http://localhost:8080/postagem", this.token)
   }
 
-  postPostagem(postagem: Postagem){
-    return this.http.post("http://localhost:8080/postagens", postagem, this.token)
+  getByIdPostagem(id: number) {
+    return this.http.get(`http://localhost:8080/postagem/${id}`, this.token)
+  }
+
+  postPostagem(postagem: Postagem) {
+    return this.http.post("http://localhost:8080/postagem", postagem, this.token)
+  }
+
+  putPostagem(postagem: Postagem) {
+    return this.http.put("http://localhost:8080/postagem", postagem, this.token)
+  }
+
+  deletePostagem(id: number) {
+    return this.http.delete(`http://localhost:8080/postagem/${id}`, this.token)
+
   }
 }
