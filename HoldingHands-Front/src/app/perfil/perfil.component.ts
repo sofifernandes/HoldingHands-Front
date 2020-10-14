@@ -6,6 +6,8 @@ import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 import { UsuarioService } from '../service/usuario.service';
+import { environment } from '../../environments/environment.prod'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -34,11 +36,17 @@ export class PerfilComponent implements OnInit {
     private postagemService: PostagemService,
     private usuarioService: UsuarioService, 
     private temaService: TemaService,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
+
+    if(environment.token == '') {
+      this.alert.showAlertInfo("Você precisa estar logado para acessar")
+      this.router.navigate(["/login"])
+    }
 
     this.getIdUser()    
     this.findAllTemas()
@@ -77,12 +85,11 @@ export class PerfilComponent implements OnInit {
     })
   }  
 
-  getIdUser(): number{    
+  getIdUser(){    
     let nomeUser = localStorage.getItem("nome")
     this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {      
       this.idUser = resp.id      
     })
-    return this.idUser    
   }
 
   fraseAleatoria() {
@@ -97,7 +104,7 @@ export class PerfilComponent implements OnInit {
   }
 
   findAllUserPostagens() { 
-    this.usuarioService.getByIdUser(parseInt(this.idUser, 10)).subscribe((resp: User) => {    
+    this.usuarioService.getByIdUser(environment.idUser).subscribe((resp: User) => {    
       this.listaPostagens = resp.postagem
     })
   }

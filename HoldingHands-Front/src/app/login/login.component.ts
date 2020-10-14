@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
 import { AuthService } from '../service/auth.service';
+import { environment } from '../../environments/environment.prod'
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,16 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0)
   }
 
   entrar() {
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       this.userLogin = resp
-      localStorage.setItem("token", this.userLogin.token)
-      localStorage.setItem("nome", this.userLogin.usuario) 
+      environment.idUser = this.userLogin.id
+      environment.nomeUser = this.userLogin.nome
+      environment.fotoUser = this.userLogin.foto
+      environment.token = this.userLogin.token
       this.router.navigate(["/home"])
   })
   }
