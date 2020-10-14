@@ -97,7 +97,7 @@ export class PerfilComponent implements OnInit {
   }
 
   findAllUserPostagens() { 
-    this.usuarioService.getByIdUser(parseInt(this.idUser, 10)).subscribe((resp: User) => {    
+    this.usuarioService.getByIdUser(this.idUser).subscribe((resp: User) => {    
       this.listaPostagens = resp.postagem
     })
   }

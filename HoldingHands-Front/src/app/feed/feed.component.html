@@ -1,6 +1,6 @@
 <div class="parallax-fundo">
 
-    <div class="container" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+    <div class="container " style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
         <div class="row d-flex justify-content-center">
             <div class="mt-5">
                 <h1>Feed</h1>
@@ -28,8 +28,8 @@
                         aria-labelledby="nav-postagens-tab">                   
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card mt-5 mb-5" *ngFor="let item of listaPostagens | orderBy : key : reverse">
-                                    <div class="card-header">
+                                <div class="card mt-5 mb-5  shadow p-3 mb-5 bg-white rounded" *ngFor="let item of listaPostagens | orderBy : key : reverse">
+                                    <div class="card-header ">
                                         <div class="row d-flex align-items-center">
                                             <div class="col-md-8">
                                                 <h5 class="card-title"> {{item.titulo}} </h5>
