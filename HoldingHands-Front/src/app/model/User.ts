@@ -7,4 +7,5 @@ export class User {
     public senha: string
     public email: string
     public postagem: Postagem[]
+    public foto: string
   }
