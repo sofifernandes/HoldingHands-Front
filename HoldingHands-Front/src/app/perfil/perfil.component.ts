@@ -47,8 +47,7 @@ export class PerfilComponent implements OnInit {
       this.alert.showAlertInfo("Você precisa estar logado para acessar")
       this.router.navigate(["/login"])
     }
-
-    this.getIdUser()    
+     
     this.findAllTemas()
     this.fraseAleatoria()
     this.findAllUserPostagens()
@@ -59,9 +58,9 @@ export class PerfilComponent implements OnInit {
   publicar() {
     this.tema.id= this.idTema
     this.postagem.tema = this.tema 
-    this.user.id= this.idUser
+    this.user.id= environment.idUser
     this.postagem.usuario = this.user
-    if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null ){
+    if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null){
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
@@ -84,13 +83,6 @@ export class PerfilComponent implements OnInit {
       this.tema = resp
     })
   }  
-
-  getIdUser(){    
-    let nomeUser = localStorage.getItem("nome")
-    this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {      
-      this.idUser = resp.id      
-    })
-  }
 
   fraseAleatoria() {
     let num = Math.floor(Math.random() * 3)

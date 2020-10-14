@@ -24,10 +24,10 @@
           <div class="row d-flex align-items-end mb-3">
             <div class="col-md-6">
               <div class="form-group m-0 ml-3">
-                <label for="tema">Escolha um tema:</label>
+                <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
                 <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
                   <option *ngFor='let item of listaTema' value={{item.id}}>
-                    {{item.nome}}
+                    {{item.descricao}}
                   </option>
                 </select>
               </div>
