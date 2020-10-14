@@ -15,8 +15,8 @@ export class UsuarioService {
     headers: new HttpHeaders().set('Authorization', localStorage.getItem('token'))
   }
 
-  user = {
-    headers: new HttpHeaders().set('Authorization', localStorage.getItem('token'))
-  }
+  getByNomeUser(nome: string) {
+    return this.http.get(`http://localhost:8080/usuario/nome/${nome}`, this.token)
+  }  
  
 }

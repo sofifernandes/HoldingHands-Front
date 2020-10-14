@@ -11,12 +11,23 @@ import { AuthService } from '../service/auth.service';
 export class PerfilLateralComponent implements OnInit {
 
   nome: string   
+  user: User = new User()
   
-  constructor(public auth: AuthService) { }
+  constructor(
+    private usuarioService: UsuarioService) { }
 
   ngOnInit() {  
 
+    this.getByNomeUser()
+
   } 
-  
+
+  getByNomeUser() {  
+      let nomeUser = localStorage.getItem("nome")            
+      this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {
+        this.user = resp
+      })
+      this.nome = this.user.usuario  
+  }
 
 }
