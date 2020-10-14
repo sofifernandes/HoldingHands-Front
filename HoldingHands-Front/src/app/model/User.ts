@@ -1,5 +1,4 @@
 import { Postagem } from './postagem'
-
   
 export class User {
     public id: number
@@ -7,5 +6,6 @@ export class User {
     public usuario: string
     public senha: string
     public email: string
-    public postagem: Postagem
+    public postagem: Postagem[]
+    public foto: string
   }

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/Tema';
+import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { UsuarioService } from '../service/usuario.service';
+import { environment } from '../../environments/environment.prod'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -21,35 +25,42 @@ export class PerfilComponent implements OnInit {
   tema: Tema = new Tema()
   listaTema: Tema[]
 
+  user: User = new User()
+
   idTema: number
+  idUser: number
 
   frasePostagem: string
 
   constructor(
-    private postagemService: PostagemService, 
+    private postagemService: PostagemService,
+    private usuarioService: UsuarioService, 
     private temaService: TemaService,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
 
-    this.findAllPostagens()
+    if(environment.token == '') {
+      this.alert.showAlertInfo("Você precisa estar logado para acessar")
+      this.router.navigate(["/login"])
+    }
+
+    this.getIdUser()    
     this.findAllTemas()
     this.fraseAleatoria()
+    this.findAllUserPostagens()
+    
   }
-
-
-
-  findAllPostagens() {
-    this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
-      this.listaPostagens= resp
-    })
-  }
+ 
 
   publicar() {
     this.tema.id= this.idTema
-    this.postagem.tema = this.tema
+    this.postagem.tema = this.tema 
+    this.user.id= this.idUser
+    this.postagem.usuario = this.user
     if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null ){
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
@@ -57,7 +68,7 @@ export class PerfilComponent implements OnInit {
         this.postagem =  resp
         this.postagem = new Postagem()
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
-        this.findAllPostagens()
+        this.findAllUserPostagens()
       })
     }
   }
@@ -74,6 +85,13 @@ export class PerfilComponent implements OnInit {
     })
   }  
 
+  getIdUser(){    
+    let nomeUser = localStorage.getItem("nome")
+    this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {      
+      this.idUser = resp.id      
+    })
+  }
+
   fraseAleatoria() {
     let num = Math.floor(Math.random() * 3)
     if (num == 0) {
@@ -83,6 +101,12 @@ export class PerfilComponent implements OnInit {
     } else {
       this.frasePostagem = 'Colabore conosco!'
     }
+  }
+
+  findAllUserPostagens() { 
+    this.usuarioService.getByIdUser(environment.idUser).subscribe((resp: User) => {    
+      this.listaPostagens = resp.postagem
+    })
   }
 }
 
