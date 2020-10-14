@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
@@ -20,7 +22,7 @@ export class PerfilComponent implements OnInit {
   titulo: string
 
   tema: Tema = new Tema()
-  listaTema: Tema[]
+  listaTemas: Tema[]
   idTema: number
   nomeTema: string
 
@@ -28,10 +30,19 @@ export class PerfilComponent implements OnInit {
   constructor(
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+
+    let token = environment.token
+
+    if(token == ''){
+      this.router.navigate(['/login'])
+      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
+    }
+
     window.scroll(0, 0)
 
     this.findAllPostagens()
@@ -49,6 +60,7 @@ export class PerfilComponent implements OnInit {
   publicar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
+    
     if (this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null) {
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
@@ -63,7 +75,7 @@ export class PerfilComponent implements OnInit {
 
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTema = resp
+      this.listaTemas = resp
     })
   }
 
@@ -88,7 +100,7 @@ export class PerfilComponent implements OnInit {
       this.findAllTemas()
     } else {
       this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
-        this.listaTema = resp
+        this.listaTemas = resp
       })
     }
   }
