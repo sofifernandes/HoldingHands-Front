@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Postagem } from '../model/postagem';
+import { environment } from '../../environments/environment.prod'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PostagemService {
     private http: HttpClient
   ) { }
 
-  token = { headers: new HttpHeaders().set("Authorization", localStorage.getItem("token")) }
+  token = { headers: new HttpHeaders().set("Authorization", environment.token) }
 
 
   getAllPostagens() {
