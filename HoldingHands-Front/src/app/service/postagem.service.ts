@@ -1,19 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Postagem } from '../model/postagem';
-import { environment } from '../../environments/environment.prod'
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostagemService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  token = { headers: new HttpHeaders().set("Authorization", environment.token) }
-
+  constructor(private http: HttpClient) { }
+  
+  token = {
+    headers: new HttpHeaders().set("Authorization", environment.token)
+  }
 
   getAllPostagens() {
     return this.http.get("http://localhost:8080/postagem", this.token)
@@ -34,5 +33,9 @@ export class PostagemService {
   deletePostagem(id: number) {
     return this.http.delete(`http://localhost:8080/postagem/${id}`, this.token)
 
+  }
+
+  getByTituloPostagem(titulo: string) {
+    return this.http.get(`http://localhost:8080/postagem/titulo/${titulo}`, this.token)
   }
 }

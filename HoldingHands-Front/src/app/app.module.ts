@@ -24,6 +24,7 @@ import { DeletePostagemComponent } from './delete-postagem/delete-postagem.compo
 import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { InformacoesComponent } from './informacoes/informacoes.component';
+import { PostTemaComponent } from './post-tema/post-tema.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { InformacoesComponent } from './informacoes/informacoes.component';
     DeletePostagemComponent,
     DeleteTemaComponent,
     AlertasComponent,
-    InformacoesComponent
+    InformacoesComponent,
+    PostTemaComponent
   ],
   imports: [
     BrowserModule,

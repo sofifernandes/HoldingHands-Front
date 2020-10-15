@@ -5,4 +5,5 @@ export class Tema {
   public descricao: string
   public qnt_posts: number
   public nome: string
+  public postagem: Postagem[]
 }
