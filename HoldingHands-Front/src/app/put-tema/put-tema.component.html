@@ -9,7 +9,13 @@
             <div>
                 <div class="form-group">
                   <label for="titulo">Nome do tema:</label>
-                  <input type="text" class="form-control" id="titulo" placeholder="Digite aqui o seu titulo" [(ngModel)]="tema.descricao">
+                  <input type="text" class="form-control" id="titulo" placeholder="Digite aqui o seu titulo" [(ngModel)]="tema.nome">
+                </div>
+
+                <div class="form-group">
+                  <label for="texto">Descrição:</label>
+                  <textarea class="form-control" id="descricao" rows="3" placeholder="Digite aqui a descrição do tema"
+                    [(ngModel)]='tema.descricao'></textarea>
                 </div>
   
                 <div class="d-flex justify-content-end">

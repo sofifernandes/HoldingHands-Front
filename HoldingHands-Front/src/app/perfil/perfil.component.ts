@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
@@ -8,7 +6,7 @@ import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 import { UsuarioService } from '../service/usuario.service';
-import { environment } from '../../environments/environment.prod'
+import { environment } from '../../environments/environment.prod';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,6 +24,7 @@ export class PerfilComponent implements OnInit {
   titulo: string
 
   tema: Tema = new Tema()
+  nomeTema: string
 
   listaTema: Tema[]
 
@@ -86,7 +85,7 @@ export class PerfilComponent implements OnInit {
 
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTemas = resp
+      this.listaTema = resp
     })
   }
 
@@ -98,7 +97,7 @@ export class PerfilComponent implements OnInit {
 
   findByTituloPostagem() {
     if (this.titulo === '') {
-      this.findAllPostagens()
+      this.findAllUserPostagens()
     } else {
       this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp: Postagem[]) => {
         this.listaPostagens = resp
@@ -111,7 +110,7 @@ export class PerfilComponent implements OnInit {
       this.findAllTemas()
     } else {
       this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
-        this.listaTemas = resp
+        this.listaTema = resp
       })
     }
   }  
