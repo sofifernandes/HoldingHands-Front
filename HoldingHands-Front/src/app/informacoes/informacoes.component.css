@@ -1,0 +1,22 @@
+.parallax1 {
+    background-image: url("https://i.imgur.com/BEWtSMZ.jpg");
+    min-height: 450px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tamanhoimg{
+    height: 500px;
+    width: 500px;
+}
+
+.tamanhoimg1{
+    height: 100%;    
+}
+
+#teste{
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.253);
+}
+
