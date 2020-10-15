@@ -23,6 +23,8 @@ import { PutTemaComponent } from './put-tema/put-tema.component';
 import { DeletePostagemComponent } from './delete-postagem/delete-postagem.component';
 import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
 import { AlertasComponent } from './alertas/alertas.component';
+import { InformacoesComponent } from './informacoes/informacoes.component';
+import { PostTemaComponent } from './post-tema/post-tema.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AlertasComponent } from './alertas/alertas.component';
     PutTemaComponent,
     DeletePostagemComponent,
     DeleteTemaComponent,
-    AlertasComponent
+    AlertasComponent,
+    InformacoesComponent,
+    PostTemaComponent
   ],
   imports: [
     BrowserModule,

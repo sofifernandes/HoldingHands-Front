@@ -1,3 +1,4 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -42,6 +43,11 @@ export class FeedComponent implements OnInit {
     }
 
     window.scroll(0, 0)
+
+    if(environment.token == '') {
+      this.alert.showAlertInfo("Você precisa estar logado para acessar")
+      this.router.navigate(["/login"])
+    }
 
     this.findAllPostagens()
     this.findAllTemas()    

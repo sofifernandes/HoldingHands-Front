@@ -1,14 +1,16 @@
-<div class="container mt-5 mb-5">
+ <div class="container pt-5" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
 
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-4 mt-5">
       <app-perfil-lateral></app-perfil-lateral>
     </div>
 
     <div class="col-md-8">
 
-      <h3 class="text-center mb-4 text-monospace">Criar postagem:</h3>
+       <h3 class="text-center mb-4">
+          {{frasePostagem}}
+        </h3>
       <div class="shadow p-3 mb-5 bg-white rounded">
         <div class="form-group mt-3 ml-3 mr-3">
           <label for="titulo">Título:</label>
@@ -26,24 +28,21 @@
 
           <div class="col-md-6">
             <div class="form-group m-0 ml-3">
-              <label for="tema">Escolha um tema:</label>
-              <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
-                <option *ngFor='let item of listaTemas' value={{item.id}}>
-                  {{item.nome}}
-                </option>
-              </select>
-            </div>
+                <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
+                <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
+                  <option *ngFor='let item of listaTema' value={{item.id}}>
+                    {{item.descricao}}
+                  </option>
+                </select>
+             </div>
           </div>
 
           <div class="col-md-6 d-flex justify-content-end mr-0.75">
             <button type="button" class="btn btn-outline-info w-25" (click)='publicar()'>Publicar</button>
           </div>
-
         </div>
-
-
-
-
+        
+        </div>        
 
 
         <hr class="mt-5 mb-5">
@@ -108,7 +107,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>   
+          
+      
 
 
           
