@@ -8,4 +8,5 @@ export class User {
     public email: string
     public postagem: Postagem[]
     public foto: string
+    public admin: boolean
   }

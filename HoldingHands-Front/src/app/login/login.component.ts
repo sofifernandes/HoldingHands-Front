@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       environment.nomeUser = this.userLogin.nome
       environment.fotoUser = this.userLogin.foto
       environment.token = this.userLogin.token
+      environment.admin = this.userLogin.admin
       this.router.navigate(["/home"])
   })
   }
