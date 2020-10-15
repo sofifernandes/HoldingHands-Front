@@ -22,25 +22,31 @@ export class AuthService {
   btnSair() {
     let ok = false
     let token = environment.token
-
     if (token != '') {
+      ok = true        
+    }
+    return ok    
+  }
+
+  btnLogin() {
+    let ok = false
+    let token = environment.token
+    if (token == '') {
+      ok = true      
+    }
+    return ok
+  } 
+  
+  
+  verificaAdmin(){
+    let ok = false
+    let admin = environment.admin
+    if (admin == true) {
       ok = true
     }
 
     return ok
   }
 
-  btnLogin() {
-    let ok = false
-    let token = environment.token
-
-
-    if (token == '') {
-      ok = true
-    }
-
-    return ok
-  } 
-  
 
 }

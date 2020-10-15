@@ -131,5 +131,7 @@ export class PerfilComponent implements OnInit {
       this.listaPostagens = resp.postagem
     })
   }
+
+  
 }
 

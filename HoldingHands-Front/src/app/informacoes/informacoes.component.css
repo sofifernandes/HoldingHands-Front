@@ -13,8 +13,10 @@
 }
 
 .tamanhoimg1{
-    height: 300px;
-    width: 300px;
+    height: 100%;    
 }
 
+#teste{
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.253);
+}
 
