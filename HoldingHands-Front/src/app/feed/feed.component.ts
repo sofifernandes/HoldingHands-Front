@@ -22,8 +22,10 @@ export class FeedComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTema: Tema[]
+  listaTemaSelected: Tema[]
 
   idTema: number
+  btnTemas: string
 
 
   constructor(
@@ -62,10 +64,22 @@ export class FeedComponent implements OnInit {
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTema= resp
+      this.listaTemaSelected= resp
     })
   }
- 
 
+  goToTop() {
+    window.scroll(0, 0)
+    this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
+      this.listaTemaSelected= resp
+    })
+  }
+
+  findByNomeTema(event: any) {
+      this.temaService.getByNomeTema(event.target.value).subscribe((resp: Tema[]) => {
+        this.listaTemaSelected = resp
+      })
+  }
 }
 
  
