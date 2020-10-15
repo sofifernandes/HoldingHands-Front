@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
@@ -15,14 +17,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  
+
   key = 'data'
   reverse = true
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
+  titulo: string
 
   tema: Tema = new Tema()
+
   listaTema: Tema[]
 
   user: User = new User()
@@ -41,6 +45,14 @@ export class PerfilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    let token = environment.token
+
+    if(token == ''){
+      this.router.navigate(['/login'])
+      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
+    }
+
     window.scroll(0, 0)
 
     if(environment.token == '') {
@@ -53,7 +65,7 @@ export class PerfilComponent implements OnInit {
     this.findAllUserPostagens()
     
   }
- 
+
 
   publicar() {
     this.tema.id= this.idTema
@@ -64,7 +76,7 @@ export class PerfilComponent implements OnInit {
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
-        this.postagem =  resp
+        this.postagem = resp
         this.postagem = new Postagem()
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllUserPostagens()
@@ -74,14 +86,34 @@ export class PerfilComponent implements OnInit {
 
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTema= resp
+      this.listaTemas = resp
     })
   }
- 
+
   findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
+  }
+
+  findByTituloPostagem() {
+    if (this.titulo === '') {
+      this.findAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByNomeTema() {
+    if (this.nomeTema === '') {
+      this.findAllTemas()
+    } else {
+      this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
+        this.listaTemas = resp
+      })
+    }
   }  
 
   fraseAleatoria() {
@@ -102,4 +134,3 @@ export class PerfilComponent implements OnInit {
   }
 }
 
- 

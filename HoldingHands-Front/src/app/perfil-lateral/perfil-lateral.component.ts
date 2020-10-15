@@ -19,19 +19,13 @@ export class PerfilLateralComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService) { }
 
+
+    this.getByNomeUser()
+
+  } 
+
   ngOnInit() {
 
-  //  this.findByNomeUser()
-
   }
-
-  //Resgate do usuario através do nome de usuario
-  /*findByNomeUser() {
-    let nomeUser = localStorage.getItem("nome")
-    this.usuarioService.getByNomeUser(nomeUser).subscribe((resp: User) => {
-      this.user = resp
-      this.nome = this.user.nome
-    })
-  }*/
 
 }

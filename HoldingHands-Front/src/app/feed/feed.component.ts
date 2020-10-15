@@ -34,6 +34,14 @@ export class FeedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    let token = environment.token
+
+    if(token == '') {
+      this.router.navigate(['/login'])
+      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
+    }
+
     window.scroll(0, 0)
 
     if(environment.token == '') {
