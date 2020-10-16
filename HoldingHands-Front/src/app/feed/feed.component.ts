@@ -26,7 +26,8 @@ export class FeedComponent implements OnInit {
 
   idTema: number
   btnTemas: string
-
+  inicioSelected: boolean
+  temaSelected: boolean
 
   constructor(
     private postagemService: PostagemService, 
@@ -38,11 +39,8 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
 
     let token = environment.token
-
-    if(token == '') {
-      this.router.navigate(['/login'])
-      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
-    }
+    this.temaSelected = false
+    this.inicioSelected = true
 
     window.scroll(0, 0)
 
@@ -72,13 +70,27 @@ export class FeedComponent implements OnInit {
     window.scroll(0, 0)
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTemaSelected= resp
+      this.inicioSelected = true
+      this.temaSelected = false
     })
   }
 
   findByNomeTema(event: any) {
       this.temaService.getByNomeTema(event.target.value).subscribe((resp: Tema[]) => {
         this.listaTemaSelected = resp
+        this.inicioSelected = false
+        this.temaSelected = true
       })
+  }
+
+  verificaInicioSelected() {
+    let ok = this.inicioSelected
+    return ok
+  }
+
+  verificaTemaSelected() {
+    let ok = this.temaSelected
+    return ok
   }
 }
 
