@@ -32,6 +32,8 @@ export class PerfilComponent implements OnInit {
 
   idTema: number
   idUser: number
+  nomeUser: string
+  fotoUser: string
 
   frasePostagem: string
 
@@ -44,25 +46,21 @@ export class PerfilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0)
 
     let token = environment.token
-
-    if(token == ''){
-      this.router.navigate(['/login'])
-      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
-    }
-
-    window.scroll(0, 0)
 
     if(environment.token == '') {
       this.alert.showAlertInfo("Você precisa estar logado para acessar")
       this.router.navigate(["/login"])
     }
-     
+    
+    this.nomeUser = environment.nomeUser
+    this.fotoUser = environment.fotoUser
+
     this.findAllTemas()
     this.fraseAleatoria()
     this.findAllUserPostagens()
-    
   }
 
 

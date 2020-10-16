@@ -1,5 +1,5 @@
 <div class="parallax-fundo">
-  <div class="container pt-5 ">
+  <div class="container pt-5 mb-5">
     <div class="row ">
       <div class="col-md-4">
         <app-perfil-lateral></app-perfil-lateral>
@@ -14,7 +14,9 @@
           <label class="text-monospace" for="foto">Link foto de perfil:</label>
           <input class="form-control" id="foto" rows="3" [(ngModel)]="linkFoto">
         </div>
-        <button type="button" class="btn btn-info" style="border-radius: 400px;" (click)='putUser()'>Enviar</button>
+        <div class="d-flex justify-content-end mt-3">
+          <button type="button" class="btn btn-info" style="border-radius: 400px;" (click)='putUser()'>Enviar</button>
+        </div>        
       </div>
     </div>
   </div>

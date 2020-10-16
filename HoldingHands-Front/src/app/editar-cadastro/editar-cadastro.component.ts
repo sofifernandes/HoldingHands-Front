@@ -25,6 +25,13 @@ export class EditarCadastroComponent implements OnInit {
   ngOnInit() {
     window.scroll(0,0)
     this.findByIdUser()
+
+    let token = environment.token
+
+    if(token == ''){
+      this.router.navigate(['/login'])
+      this.alert.showAlertInfo('Faça o login antes de entrar na edição de cadastro!')
+    }
   }
 
   findByIdUser() {
