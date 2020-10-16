@@ -3,9 +3,20 @@
     <img class="card-img-top rounded-circle w-75 shadow" src="{{fotoUser}}" alt="Imagem de capa do card">
   </div>
   <div class="card-body">
-    <p class="card-text text-center font-weight-bold"
-      style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 26px;">
-      {{nomeUser}}</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p class="card-text text-right font-weight-bold" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 26px;">{{nomeUser}}
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <a type="button"  style="content:url(https://i.imgur.com/pc9BPvC.png); width: 20px;  cursor: pointer;" (click)='editNome()'>
+          </a>
+
+        </div>
+      </div>
+    </div>
 
   </div>
 

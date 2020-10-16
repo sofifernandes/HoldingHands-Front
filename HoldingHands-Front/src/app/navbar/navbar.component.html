@@ -3,7 +3,7 @@
     aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand ml-5 mr-4 " routerLink="/home" id="iconeNavBar" style="border-radius: 7px;"></a>
+  <a class="navbar-brand ml-5 mr-4 " routerLink="/home" id="iconeNavBar" style="border-radius: 20px;"></a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -29,8 +29,8 @@
     </ul>
 
     <div *ngIf='auth.verificaAdmin()' >
-      <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>      
-    </div>  
+      <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>
+    </div>
 
     <div *ngIf='auth.btnLogin()'>
       <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink="/login">Entrar</button>
