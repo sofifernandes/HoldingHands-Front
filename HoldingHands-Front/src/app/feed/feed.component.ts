@@ -55,32 +55,32 @@ export class FeedComponent implements OnInit {
 
   findAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
-      this.listaPostagens= resp
+      this.listaPostagens = resp
     })
   }
 
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTema= resp
-      this.listaTemaSelected= resp
+      this.listaTemaSelected = resp
     })
   }
 
   goToTop() {
     window.scroll(0, 0)
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTemaSelected= resp
+      this.listaTemaSelected = resp
       this.inicioSelected = true
       this.temaSelected = false
     })
   }
 
   findByNomeTema(event: any) {
-      this.temaService.getByNomeTema(event.target.value).subscribe((resp: Tema[]) => {
-        this.listaTemaSelected = resp
-        this.inicioSelected = false
-        this.temaSelected = true
-      })
+    this.temaService.getByNomeTema(event.target.value).subscribe((resp: Tema[]) => {
+      this.listaTemaSelected = resp
+      this.inicioSelected = false
+      this.temaSelected = true
+    })
   }
 
   verificaInicioSelected() {

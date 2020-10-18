@@ -13,13 +13,15 @@ import { UsuarioService } from '../service/usuario.service';
 export class CadastroComponent implements OnInit {
 
   user: User = new User();
+  listaUsers: User[]
   senha: string;
 
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
@@ -30,20 +32,36 @@ export class CadastroComponent implements OnInit {
     this.senha = event.target.value;
   }
 
+  conferirUsuariosExistentes() {
+    this.usuarioService.getAllUsuarios().subscribe((resp: User[]) => {
+      this.listaUsers = resp
+    })
+  }
+
   cadastrar() {
-    if (this.senha === this.user.senha) {
-      if(this.user.email === 'HoldingHands.PI@gmail.com'){
-        this.user.admin = true
-      } else { 
-        this.user.admin = false
+    if (this.user.nome != null && this.user.foto != null && this.user.usuario != null && this.user.email != null && this.senha != null && this.user.senha != null) {
+      if (this.senha === this.user.senha) {
+        if (this.user.email === 'HoldingHands.PI@gmail.com') {
+          this.user.admin = true
+        } else {
+          this.user.admin = false
+        }
+        this.authService.cadastrar(this.user).subscribe((resp: User) => {
+          this.user = resp
+          this.router.navigate(["/login"])
+          this.alert.showAlertSuccess("Usuário cadastrado com sucesso")
+        }, (err) => {
+          if (err == '500') {
+            this.alert.showAlertDanger("Usuário já cadastrado")
+          } else {
+            this.alert.showAlertDanger("Aconteceu um erro. Provavelmente é porque esse usuário já existe :(")
+          }
+        })
+      } else {
+        this.alert.showAlertDanger("Suas senhas não conferem")
       }
-      this.authService.cadastrar(this.user).subscribe((resp: User) => {
-        this.user = resp
-        this.router.navigate(["/login"])
-        this.alert.showAlertSuccess("Usuário cadastrado com sucesso")
-      })
     } else {
-      this.alert.showAlertDanger("Suas senhas não conferem")
+      this.alert.showAlertDanger("Preencha os campos corretamente!")
     }
   }
 }

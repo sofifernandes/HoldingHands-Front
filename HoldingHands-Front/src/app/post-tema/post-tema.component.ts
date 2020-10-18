@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
@@ -22,6 +23,12 @@ export class PostTemaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    if(environment.token == '') {
+      this.alert.showAlertInfo("Você precisa estar logado para acessar")
+      this.router.navigate(["/login"])
+    }
+    
     this.findAllTemas()
   }
 

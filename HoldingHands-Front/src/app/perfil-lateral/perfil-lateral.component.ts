@@ -20,7 +20,8 @@ export class PerfilLateralComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.nomeUser = environment.nomeUser
+    this.fotoUser = environment.fotoUser
   }
 
   editNome() {

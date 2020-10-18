@@ -4,5 +4,7 @@ export const environment = {
   nomeUser: '',
   fotoUser: '',
   token: '',
-  admin: false
+  admin: false,
+  senha: '',
+  usuario: ''
 };

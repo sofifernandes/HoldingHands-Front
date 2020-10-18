@@ -1,5 +1,4 @@
 .sticker {
-    position: -webkit-sticky;
     position: sticky;
     top: 70px;
     height: 300px;
@@ -17,5 +16,4 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;   
-    
 }

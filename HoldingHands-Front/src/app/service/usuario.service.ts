@@ -18,11 +18,15 @@ export class UsuarioService {
   }
 
   getByIdUser(id: number){
-      return this.http.get(`http://localhost:8080/usuario/${id}`, this.token)
+    return this.http.get(`http://localhost:8080/usuario/${id}`, this.token)
   }
 
   putUsuario(usuario: User) {
     return this.http.put('http://localhost:8080/usuario', usuario, this.token)
+  }
+
+  getAllUsuarios() {
+    return this.http.get('http://localhost:8080/usuario', this.token)
   }
 
 }
