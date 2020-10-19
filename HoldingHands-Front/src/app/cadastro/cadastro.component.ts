@@ -41,7 +41,7 @@ export class CadastroComponent implements OnInit {
   cadastrar() {
     if (this.user.nome != null && this.user.foto != null && this.user.usuario != null && this.user.email != null && this.senha != null && this.user.senha != null) {
       if (this.senha === this.user.senha) {
-        if (this.user.email === 'HoldingHands.PI@gmail.com') {
+        if (this.user.email.toLowerCase() === 'holdinghands.pi@gmail.com') {
           this.user.admin = true
         } else {
           this.user.admin = false

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       environment.admin = this.userLogin.admin
       environment.senha = this.userLogin.senha
       environment.usuario = this.userLogin.usuario
-      this.router.navigate(["/home"])
+      this.router.navigate(["/feed"])
   })
   }
 

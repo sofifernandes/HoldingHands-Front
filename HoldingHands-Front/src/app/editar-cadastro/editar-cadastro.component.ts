@@ -17,10 +17,6 @@ export class EditarCadastroComponent implements OnInit {
   nomeUser: string
   linkFoto: string
   idUser: number
-  adminUser: boolean
-  senhaUser: string
-  usuarioUser: string
-  listaPostagens: Postagem[]
 
   constructor(
     private usuarioService: UsuarioService,
@@ -39,8 +35,6 @@ export class EditarCadastroComponent implements OnInit {
       this.router.navigate(['/login'])
       this.alert.showAlertInfo('Faça o login antes de entrar na edição de cadastro!')
     }
-
-    this.findAllUserPostagens()
   }
 
   findByIdUser() {
@@ -48,12 +42,6 @@ export class EditarCadastroComponent implements OnInit {
       this.user = resp
       this.nomeUser = this.user.nome
       this.linkFoto = this.user.foto
-    })
-  }
-
-  findAllUserPostagens() { 
-    this.usuarioService.getByIdUser(environment.idUser).subscribe((resp: User) => {    
-      this.listaPostagens = resp.postagem
     })
   }
 
@@ -65,20 +53,10 @@ export class EditarCadastroComponent implements OnInit {
       this.user = resp
       environment.nomeUser = this.user.nome
       environment.fotoUser = this.user.foto
-      
     })
 
-    this.router.navigate(['/perfil'])
+    this.router.navigate(['/home'])
     this.alert.showAlertSuccess('Perfil alterado com sucesso!!')
   }
 
 }
-
-/*
-this.listaPostagens.forEach(function (item) {
-        item.qntCurtidas = 5
-        this.postagemService.putPostagem(item).subscribe((res: Postagem) => {
-          item = res
-        })
-      });
-      */
